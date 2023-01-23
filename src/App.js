@@ -61,16 +61,19 @@ function App() {
   useEffect(() => {
     localStorage.setItem('list', JSON.stringify(list));
   }, [list]);
+
+
+
   return (
-    <section className='section-center'>
-      <form className='grocery-form' onSubmit={handleSubmit}>
+    <section className='section-center w-[90vw] max-w-[35rem] mt-[8rem] m-auto'>
+      <form className='' onSubmit={handleSubmit}>
         {alert.show && <Alert {...alert} removeAlert={showAlert} list={list} />}
 
-        <h3>grocery bud</h3>
-        <div className='form-control'>
+        <h3 className='text-black mb-6 text-center'>grocery bud</h3>
+        <div className='flex justify-center'>
           <input
             type='text'
-            className='grocery'
+            className='grocery p-3 pl-4 rounded-tl-[0.25rem] rounded-bl-[0.25rem] border-transparent text-[1rem]'
             placeholder='e.g. eggs'
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -81,7 +84,7 @@ function App() {
         </div>
       </form>
       {list.length > 0 && (
-        <div className='grocery-container'>
+        <div className='mt-8'>
           <List items={list} removeItem={removeItem} editItem={editItem} />
           <button className='clear-btn' onClick={clearList}>
             clear items
